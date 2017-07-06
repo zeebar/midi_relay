@@ -1,0 +1,15 @@
+#!/usr/bin/env ruby
+
+require 'daemons'
+require "midi_relay"
+
+Daemons.run_proc( "midi_relay.rb" )  do
+
+  require "midi_relay/client"
+
+  relay = MidiRelay::Client.new( "bob", "localhost" )
+
+  relay.log "hello"
+    
+end
+
